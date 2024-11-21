@@ -9,7 +9,7 @@ localparam DIV=4'b0011;
   localparam OR_OP=4'b0111;
   localparam XOR_OP=4'b1000;
     localparam NOT_OP=4'b1001;
-  always@()begin
+  always@(*)begin
     case(ALUOp)
       ADD:r1=r2+r2;
        SUB:r2=r2-r3;
@@ -29,16 +29,12 @@ localparam DIV=4'b0011;
 //test bench
 
   module ALU_19bit_tb();
-    inputds//
     reg [18:0] r3;
     reg [18:0] r2;
     reg [3:0] ALUOp;
-
-    // Outputs
     wire [18:0] r1;
     wire Zero;
 
-    // Instantiate the ALU module
     ALU_19bit uut (
       .r1(r1),
       .r2(r2),.r3(r3),
@@ -48,7 +44,6 @@ localparam DIV=4'b0011;
     );
 
     initial begin
-        // Test ADD operation
         r2 = 19'd10; r3= 19'd5; ALUOp = 4'b0000; #10;
       $display("ADD: r2=%d, r3=%d, r1=%d, Zero=%b", r2, r3, r1, Zero);
         r2 = 19'd5; r3= 19'd10; ALUOp = 4'b0001; #10;
