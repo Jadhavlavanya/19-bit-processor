@@ -26,8 +26,7 @@ localparam DIV=4'b0011;
   end
   assign Zero=(r1==19'b0);
   end module
-
-Here’s a simplified version of the test bench for the ALU_19bit module:
+//test bench
 
   module ALU_19bit_tb();
     inputds//
